@@ -1,0 +1,11 @@
+.bold-text{
+    font-weight: bold;
+}
+
+.inputDisplay{
+    display: flex;
+}
+
+.inputDisplay > *{
+    margin: 10px;
+}
