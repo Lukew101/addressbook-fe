@@ -1,11 +1,134 @@
-.bold-text{
-    font-weight: bold;
+main{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.centre-content{
+    width: 800px;
+    text-align: center;
 }
 
 .inputDisplay{
-    display: flex;
+    padding: 0 10px;
 }
 
 .inputDisplay > *{
-    margin: 10px;
+    margin: 10px 0;
+}
+
+.address-container-flex{
+    display: flex;
+    border-bottom: 1px solid lightgrey;
+}
+
+.address-container-flex p .name,
+.address-container-flex p .number,
+.edit-input-name,
+.edit-input-number{
+    display: block;
+    width: 170px;
+    text-align: left;
+    margin-right: 7px;
+}
+
+.headers-div > *{
+    width: 180px;
+    text-align: left;
+}
+
+.address-container-flex p .address,
+.edit-input-address{
+    display: block;
+    width: 370px;
+    margin-right: 10px;
+    text-align: left;
+}
+
+.edit-input-number,
+.edit-input-name,
+.edit-input-address{
+    border: solid 1px black;
+    border-radius: 5px;
+    padding: 3px;
+    font-size: 14px;
+}
+
+
+.headers-div{
+    display: flex;
+    background-color: #3d3dff;
+    color: white;
+    padding: 0 10px;
+}
+
+form{
+    display: none;
+}
+
+.form-display{
+    display: block;
+    position: absolute;
+    margin: -50px 0 0 100px;
+}
+
+.open-form{
+    cursor: pointer;
+    margin-bottom: 70px;
+    font-size: 18px;
+    background-color: rgb(3, 107, 3);
+    border-radius: 20px;
+    width: 200px;
+    padding: 5px;
+    color: white;
+}
+
+.address-add{
+    display: flex;
+    justify-content: center;
+}
+
+label{
+    font-weight: bold;
+}
+
+.edit-button,
+.remove-button{
+    font-size: 18px;
+    margin: 15px 2px 0 4px;
+    cursor: pointer;
+}
+
+.fa-regular{
+    font-size: 25px;
+    margin-top: 16px;
+    color: green;
+    cursor: pointer;
+}
+
+.remove-button{
+    color: red;
+}
+
+.edit-remove-buttons{
+    display: flex;
+}
+
+.button-hider{
+    display: none;
+}
+
+.number-error-message{
+    display: none;
+    color: red;
+    position: absolute;
+    margin: 5px 0 0 200px;
+}
+
+.number-error-display{
+    display: block;
 }

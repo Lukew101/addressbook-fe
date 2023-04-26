@@ -1,5 +1,14 @@
-const addressDisplayContainer = document.querySelector(".inputDisplay");
+import { createAddressList } from "./components/createAddressList.js";
+
 const form = document.querySelector("#form");
+
+function openAddressAdder(){
+	const formOpener = document.querySelector(".open-form");
+	formOpener.addEventListener('click', function(){
+		form.classList.toggle("form-display");
+	})
+}
+openAddressAdder();
 
 //GET request
 function displayAddresses(){
@@ -16,9 +25,28 @@ displayAddresses();
 // POST request
 form.addEventListener('submit', function(event) {
 	event.preventDefault();
-
+	
+	// Get data from form fields
 	const formData = new FormData(form);
 	const data = Object.fromEntries(formData);
+
+	// Add in condition so Number must be a number
+	const errorMessage = document.querySelector(".number-error-message");
+	if(isNaN(data.mobileNumber)){
+		errorMessage.classList.add("number-error-display");
+
+		setTimeout(() => {
+			errorMessage.classList.remove("number-error-display");
+		}, 3000)
+		return;
+	}
+
+	// Clear data fields
+	const formInputs = document.querySelectorAll("form input");
+	formInputs.forEach(input => {
+		input.value = "";
+	})
+
 
 	fetch('http://localhost:8080/person', {
 		method: 'POST',
@@ -31,37 +59,3 @@ form.addEventListener('submit', function(event) {
 	.then(data=> createAddressList([data])) //createAddressList called to add new person to HTML
 	.catch(err => console.error(err));
 })
-
-
-// Creating address list and DELETE request through remove button
-function createAddressList(data){
-	for(let i = 0; i < data.length; i++){
-		const person = data[i];
-		console.log(person);
-		addressDisplayContainer.innerHTML += `<div class="address-container-flex" data-person-id="${person.id}">
-												<p><span class="bold-text">Name:</span> ${person.name}</p>
-												<p><span class="bold-text">Number:</span> ${person.mobileNumber}</p> 
-												<p><span class="bold-text">Address:</span> ${person.address}</p>
-												<button type="button" class="remove-button">Remove</button>
-											</div>`;
-			const addressContainer = addressDisplayContainer.lastElementChild;
-			const removeButton = document.querySelector(".remove-button");
-			removeButton.addEventListener('click', function(event) {
-			event.preventDefault();
-
-			const personId = addressContainer.getAttribute("data-person-id");
-			console.log(personId);
-		
-			fetch(`http://localhost:8080/person/${personId}`, {
-				method: 'DELETE',
-			})
-			.then(response => response.json())
-			.then(data=> {
-				console.log(data);
-				event.target.parentElement.remove();
-			})
-			.catch(err => console.error(err));
-		})
-	}
-}
-// PUT request

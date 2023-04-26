@@ -7,19 +7,34 @@
     <meta name="description" content="My address book">
     <title>Address Book</title>
     <link href="style.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/958e18979f.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <main>
-        <form id="form" method="post" name="form">
-            <label for="name">Name</label>
-            <input name="name" type="text" id="nameInput">
-            <label for="number">Number</label>
-            <input name="mobileNumber" type="tel" id="numberInput">
-            <label for="address">Address</label>
-            <input name="address" type="text" id="addressInput">
-            <button type="submit">Submit</button>
-        </form>
-        <div class="inputDisplay"></div>
+        <div class="centre-content">
+            <h1>My Address Book</h1>
+            <div class="address-add">
+                <h2 class="open-form">Add new address</h2>
+            </div>
+            <form id="form" method="post" name="form">
+                <label for="name">Name</label>
+                <input name="name" type="text" id="nameInput">
+                <label for="number">Number</label>
+                <input name="mobileNumber" type="tel" id="numberInput">
+                <label for="address">Address</label>
+                <input name="address" type="text" id="addressInput">
+                <button type="submit">Add</button>
+                <p class="number-error-message">*Please enter a valid number</p>
+            </form>
+        </div>
+        <div class="centre-content">
+            <div class="headers-div">
+                <h3>Name</h3>
+                <h3>Number</h3>
+                <h3>Address</h3>
+            </div>
+            <div class="inputDisplay"></div>
+        </div>  
     </main>
     <script src="./js/script.js" type="module"></script>
 </body>
